@@ -9,9 +9,11 @@ import Image from '@tiptap/extension-image';
 import {
   Bold, Italic, List, ListOrdered, Heading2, Heading3,
   Quote, Undo2, Redo2, Link as LinkIcon, Image as ImageIcon,
+  ImagePlus,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { makeSlug } from '@/lib/utils';
+import { ImageUpload } from '@/components/admin/ImageUpload';
 
 type Initial = {
   id: string;
@@ -128,20 +130,38 @@ export function PostEditor({ post }: { post?: Initial }) {
           rows={2}
           value={excerpt ?? ''}
           onChange={(e) => setExcerpt(e.target.value)}
-          placeholder="Short summary for the blog index (1–2 sentences)"
+          placeholder="Short summary for the blog index (1\u20132 sentences)"
         />
       </div>
 
       <div className="grid gap-2">
         <label className="text-xs font-medium uppercase tracking-[0.14em] text-foreground-subtle">
-          Cover image URL
+          Cover image
         </label>
-        <input
-          className={inputCls}
-          value={imageUrl ?? ''}
-          onChange={(e) => setImageUrl(e.target.value)}
-          placeholder="https://…"
-        />
+        <div className="flex gap-2">
+          <input
+            className={inputCls}
+            value={imageUrl ?? ''}
+            onChange={(e) => setImageUrl(e.target.value)}
+            placeholder="https://\u2026 or upload"
+          />
+          <ImageUpload
+            folder="cayman-formation/covers"
+            label="Upload"
+            onUploaded={(url) => setImageUrl(url)}
+            className="shrink-0"
+          />
+        </div>
+        {imageUrl && (
+          <div className="mt-2 rounded-xl border border-border bg-white p-2 w-fit">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={imageUrl}
+              alt="cover preview"
+              className="h-24 w-auto rounded-lg object-cover"
+            />
+          </div>
+        )}
       </div>
 
       <div className="grid gap-2">
@@ -150,7 +170,7 @@ export function PostEditor({ post }: { post?: Initial }) {
         </label>
 
         {editor && (
-          <div className="flex flex-wrap gap-1 rounded-xl border border-border bg-white p-2 shadow-soft">
+          <div className="flex flex-wrap items-center gap-1 rounded-xl border border-border bg-white p-2 shadow-soft">
             <ToolbarBtn onClick={() => editor.chain().focus().toggleBold().run()} active={editor.isActive('bold')} label="Bold"><Bold size={14} /></ToolbarBtn>
             <ToolbarBtn onClick={() => editor.chain().focus().toggleItalic().run()} active={editor.isActive('italic')} label="Italic"><Italic size={14} /></ToolbarBtn>
             <ToolbarBtn onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()} active={editor.isActive('heading', { level: 2 })} label="H2"><Heading2 size={14} /></ToolbarBtn>
@@ -175,10 +195,19 @@ export function PostEditor({ post }: { post?: Initial }) {
                 if (!url) return;
                 editor.chain().focus().setImage({ src: url }).run();
               }}
-              label="Image"
+              label="Image from URL"
             >
               <ImageIcon size={14} />
             </ToolbarBtn>
+            <ImageUpload
+              iconOnly
+              folder="cayman-formation/posts"
+              label="Upload image"
+              onUploaded={(url) => {
+                editor.chain().focus().setImage({ src: url }).run();
+              }}
+              className="border-transparent hover:bg-background-muted"
+            />
             <div className="mx-1 w-px self-stretch bg-border" />
             <ToolbarBtn onClick={() => editor.chain().focus().undo().run()} label="Undo"><Undo2 size={14} /></ToolbarBtn>
             <ToolbarBtn onClick={() => editor.chain().focus().redo().run()} label="Redo"><Redo2 size={14} /></ToolbarBtn>
@@ -201,7 +230,7 @@ export function PostEditor({ post }: { post?: Initial }) {
 
       <div className="flex items-center gap-3">
         <Button onClick={save} disabled={saving || !title}>
-          {saving ? 'Saving…' : editing ? 'Update post' : 'Create post'}
+          {saving ? 'Saving\u2026' : editing ? 'Update post' : 'Create post'}
         </Button>
         <Button variant="secondary" onClick={() => router.push('/admin/posts')}>
           Cancel
