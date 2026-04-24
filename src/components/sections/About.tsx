@@ -1,59 +1,85 @@
 'use client';
 
 import Image from 'next/image';
-import { CheckCircle2 } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
 import { Button } from '@/components/ui/Button';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 
-const bullets = [
-  'Licensed Cayman Islands corporate services provider',
-  'In-house legal, compliance and banking desk',
-  'Transparent fixed-fee pricing with no hidden costs',
-  'Over 800 structures incorporated for global clients',
+const values = [
+  { n: '01', label: 'Licensed', sub: 'Cayman Islands corporate services provider' },
+  { n: '02', label: 'In-house', sub: 'Legal, compliance and banking desk' },
+  { n: '03', label: 'Fixed-fee', sub: 'Transparent pricing, no hidden costs' },
+  { n: '04', label: '800+', sub: 'Structures incorporated for global clients' },
 ];
 
 export function About() {
   const ref = useScrollReveal<HTMLElement>();
 
   return (
-    <section ref={ref} id="about" className="py-24 sm:py-32">
+    <section ref={ref} id="about" className="relative py-28 sm:py-40">
       <Container wide>
-        <div className="grid gap-14 lg:grid-cols-2 lg:items-center">
-          <div data-reveal className="relative">
-            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl border border-border shadow-premium">
+        <div className="grid gap-16 lg:grid-cols-12 lg:gap-14">
+          {/* Portrait */}
+          <div data-reveal className="lg:col-span-5">
+            <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-[3px] shadow-editorial">
               <Image
-                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=80"
-                alt="Cayman Islands coastline"
+                src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1400&q=85"
+                alt="Grand Cayman waterfront"
                 fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover grayscale-[20%]"
+                sizes="(max-width: 1024px) 100vw, 45vw"
               />
-            </div>
-            <div className="absolute -right-6 -bottom-6 hidden sm:block w-40 h-40 rounded-2xl bg-white/90 border border-border shadow-soft backdrop-blur-sm p-5">
-              <div className="text-xs uppercase tracking-[0.18em] text-foreground-subtle">Since</div>
-              <div className="mt-2 font-display text-5xl">2014</div>
-              <div className="mt-1 text-xs text-foreground-muted">serving global clients</div>
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/40 via-transparent to-transparent" />
+            </figure>
+            <div className="mt-6 flex items-end justify-between text-[11px] uppercase tracking-[0.28em] text-foreground-muted">
+              <span>George Town · Grand Cayman</span>
+              <span className="font-serif italic text-gold text-[13px] tracking-normal">
+                n° 02
+              </span>
             </div>
           </div>
 
-          <div data-reveal>
-            <SectionHeading
-              eyebrow="About us"
-              title={<>A boutique firm for serious offshore structures</>}
-              description="We are a Cayman-based corporate services boutique dedicated exclusively to incorporating and maintaining high-quality offshore structures for international entrepreneurs, family offices and fund managers."
-            />
-            <ul className="mt-8 space-y-3">
-              {bullets.map((b) => (
-                <li key={b} className="flex items-start gap-3 text-foreground">
-                  <CheckCircle2 size={20} className="mt-1 text-brand shrink-0" />
-                  <span>{b}</span>
+          {/* Text */}
+          <div data-reveal className="lg:col-span-7 lg:pt-10">
+            <div className="flex items-baseline gap-3 mb-6">
+              <span className="chapter-num text-base">V.</span>
+              <span className="eyebrow-alt">About</span>
+            </div>
+            <h2 className="font-display text-display-lg text-ink text-balance">
+              A boutique firm for <span className="font-serif italic text-gold">serious</span> offshore structures.
+            </h2>
+
+            <blockquote className="mt-10 border-l-2 border-gold pl-6 max-w-xl">
+              <p className="pullquote text-ink">
+                “We felt international clients deserved the same rigour as the big-four firms — without the bureaucracy, junior handovers and opaque fees. So we built one.”
+              </p>
+              <footer className="mt-4 text-[11px] uppercase tracking-[0.28em] text-foreground-subtle">
+                Founding partners, 2014
+              </footer>
+            </blockquote>
+
+            <p className="mt-10 text-foreground-muted leading-relaxed max-w-xl">
+              Today we support founders, family offices and fund managers with turnkey formation,
+              nominee services, banking and ongoing compliance. Named partners remain personally
+              responsible for every engagement — no junior handovers, no call centres.
+            </p>
+
+            <ul className="mt-12 grid gap-6 sm:grid-cols-2 max-w-xl">
+              {values.map((v) => (
+                <li key={v.n} className="border-t border-border pt-5">
+                  <div className="chapter-num text-sm">{v.n}</div>
+                  <div className="mt-2 font-display text-xl text-ink">{v.label}</div>
+                  <div className="mt-1 text-sm text-foreground-muted">{v.sub}</div>
                 </li>
               ))}
             </ul>
-            <div className="mt-10">
-              <Button href="/about">Read our story</Button>
+
+            <div className="mt-12">
+              <Button href="/about" variant="secondary">
+                Read our story
+                <ArrowUpRight size={16} />
+              </Button>
             </div>
           </div>
         </div>
