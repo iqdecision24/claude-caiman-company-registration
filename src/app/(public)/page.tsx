@@ -8,7 +8,6 @@ import { CTA } from '@/components/sections/CTA';
 import { HowWeWork } from '@/components/sections/HowWeWork';
 import { FAQ } from '@/components/sections/FAQ';
 import { Marquee } from '@/components/interactive/Marquee';
-import { ChapterNav } from '@/components/layout/ChapterNav';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,21 +24,9 @@ const marqueeItems = [
   'Est. MMXIV',
 ];
 
-const chapters = [
-  { id: 'home', num: 'I.', label: 'Introduction' },
-  { id: 'benefits', num: 'II.', label: 'Why Cayman' },
-  { id: 'services', num: 'III.', label: 'Services' },
-  { id: 'process', num: 'IV.', label: 'Process' },
-  { id: 'figures', num: 'V.', label: 'Figures' },
-  { id: 'about', num: 'VI.', label: 'About' },
-  { id: 'faq', num: 'VII.', label: 'Questions' },
-  { id: 'insights', num: 'VIII.', label: 'Insights' },
-];
-
 export default function HomePage() {
   return (
     <>
-      <ChapterNav chapters={chapters} />
       <Hero />
       <Benefits />
       <Marquee items={marqueeItems} speedSeconds={48} />
