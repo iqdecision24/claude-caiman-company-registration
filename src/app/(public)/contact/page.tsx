@@ -54,7 +54,7 @@ export default function ContactPage() {
                 <Clock size={20} className="text-brand mt-0.5" />
                 <div>
                   <p className="text-sm text-foreground-subtle">Hours</p>
-                  <p className="font-medium">Mon\u2013Fri \u00b7 09:00\u201318:00 (EST)</p>
+                  <p className="font-medium">Mon–Fri · 09:00–18:00 (EST)</p>
                 </div>
               </div>
             </div>

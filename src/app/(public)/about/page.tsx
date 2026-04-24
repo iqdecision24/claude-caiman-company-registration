@@ -17,7 +17,7 @@ const values = [
   },
   {
     title: 'Substance over paper',
-    body: 'We only recommend structures that make economic sense and stand up to scrutiny \u2014 no opaque shells, no short-cuts.',
+    body: 'We only recommend structures that make economic sense and stand up to scrutiny — no opaque shells, no short-cuts.',
   },
   {
     title: 'Partners, not sales reps',
@@ -33,7 +33,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="About"
             title={<>Boutique Cayman firm, global reach</>}
-            description="Founded in 2014 in George Town, we focus exclusively on the Cayman Islands jurisdiction \u2014 and we have built our practice around a single idea: get structuring right, once."
+            description="Founded in 2014 in George Town, we focus exclusively on the Cayman Islands jurisdiction — and we have built our practice around a single idea: get structuring right, once."
           />
         </Container>
       </section>
@@ -55,13 +55,13 @@ export default function AboutPage() {
               <p className="mt-5 text-foreground-muted leading-relaxed">
                 We were founded by a team of Cayman-qualified lawyers and compliance officers who
                 had spent years inside big-four firms. We felt that international clients deserved
-                the same rigour \u2014 without the bureaucracy, junior handovers and opaque fees \u2014 and we
+                the same rigour — without the bureaucracy, junior handovers and opaque fees — and we
                 built a boutique practice around that promise.
               </p>
               <p className="mt-4 text-foreground-muted leading-relaxed">
                 Today we support founders, family offices, fund managers and international
                 businesses with turnkey formation, nominee services, banking and ongoing
-                compliance \u2014 on a fixed-fee basis.
+                compliance — on a fixed-fee basis.
               </p>
             </div>
           </div>

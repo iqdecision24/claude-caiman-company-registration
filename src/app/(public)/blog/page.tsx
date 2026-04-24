@@ -33,7 +33,7 @@ export default async function BlogPage() {
           <SectionHeading
             eyebrow="Insights"
             title={<>Knowledge base for offshore founders</>}
-            description="Guides, comparisons and updates on Cayman Islands structures, banking and compliance \u2014 written by our partners."
+            description="Guides, comparisons and updates on Cayman Islands structures, banking and compliance — written by our partners."
             align="center"
           />
         </Container>

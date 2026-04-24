@@ -71,7 +71,7 @@ async function runSetup(req: Request) {
         excerpt:
           'A deep dive into the structural, fiscal and reputational advantages that have made Cayman the jurisdiction of choice for global capital.',
         content:
-          '<p>The Cayman Islands combine <strong>0% corporate tax</strong>, political stability and a sophisticated regulatory framework aligned with OECD and FATF standards. For international holding structures, investment funds and fintech ventures, the jurisdiction offers unmatched credibility.</p><p>In this article we walk through the most common vehicles \u2014 Exempted Company, LLC, SPC \u2014 and when each is the right fit.</p>',
+          '<p>The Cayman Islands combine <strong>0% corporate tax</strong>, political stability and a sophisticated regulatory framework aligned with OECD and FATF standards. For international holding structures, investment funds and fintech ventures, the jurisdiction offers unmatched credibility.</p><p>In this article we walk through the most common vehicles — Exempted Company, LLC, SPC — and when each is the right fit.</p>',
         imageUrl:
           'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80',
         published: true,
@@ -91,7 +91,7 @@ async function runSetup(req: Request) {
         slug: 'opening-a-cayman-bank-account',
         title: 'Opening a bank account for a Cayman company in 2026',
         excerpt:
-          'A practical playbook \u2014 what banks expect, KYC checklist, timelines and alternatives (EMIs, prime brokers).',
+          'A practical playbook — what banks expect, KYC checklist, timelines and alternatives (EMIs, prime brokers).',
         content:
           '<p>Banking is the single biggest bottleneck for offshore entities. This guide lists every document you will need, how to present the source of funds, and which institutions currently onboard Cayman structures.</p>',
         imageUrl:

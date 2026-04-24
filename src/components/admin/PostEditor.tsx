@@ -128,7 +128,7 @@ export function PostEditor({ post }: { post?: Initial }) {
           rows={2}
           value={excerpt ?? ''}
           onChange={(e) => setExcerpt(e.target.value)}
-          placeholder="Short summary for the blog index (1\u20132 sentences)"
+          placeholder="Short summary for the blog index (1–2 sentences)"
         />
       </div>
 
@@ -140,7 +140,7 @@ export function PostEditor({ post }: { post?: Initial }) {
           className={inputCls}
           value={imageUrl ?? ''}
           onChange={(e) => setImageUrl(e.target.value)}
-          placeholder="https://\u2026"
+          placeholder="https://…"
         />
       </div>
 
@@ -201,7 +201,7 @@ export function PostEditor({ post }: { post?: Initial }) {
 
       <div className="flex items-center gap-3">
         <Button onClick={save} disabled={saving || !title}>
-          {saving ? 'Saving\u2026' : editing ? 'Update post' : 'Create post'}
+          {saving ? 'Saving…' : editing ? 'Update post' : 'Create post'}
         </Button>
         <Button variant="secondary" onClick={() => router.push('/admin/posts')}>
           Cancel
