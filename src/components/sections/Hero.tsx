@@ -30,7 +30,7 @@ export function Hero() {
   );
 
   return (
-    <section ref={ref} className="relative overflow-hidden">
+    <section ref={ref} id="home" className="relative overflow-hidden">
       <div className="absolute inset-0 bg-hero-glow pointer-events-none" />
       <div className="absolute inset-x-0 top-0 h-[560px] bg-grid-subtle [background-size:48px_48px] opacity-[0.25] [mask-image:radial-gradient(ellipse_at_center,black,transparent_70%)] pointer-events-none" />
 
@@ -52,10 +52,7 @@ export function Hero() {
 
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-10 items-end">
           <div ref={splitRef} className="lg:col-span-7">
-            <h1
-              data-split
-              className="font-display text-editorial-hero text-ink text-balance"
-            >
+            <h1 data-split className="font-display text-editorial-hero text-ink text-balance">
               The jurisdiction
               <br />
               <span className="font-serif italic text-gold">of choice.</span>
@@ -71,15 +68,11 @@ export function Hero() {
                 offices and managers — under zero corporate tax and full confidentiality.
               </p>
               <div className="hidden md:block pt-3 border-t border-border">
-                <p className="text-[11px] uppercase tracking-[0.28em] text-foreground-subtle">
-                  Since 2014
-                </p>
+                <p className="text-[11px] uppercase tracking-[0.28em] text-foreground-subtle">Since 2014</p>
                 <p className="mt-2 font-display text-4xl text-ink">
                   800<span className="text-gold">+</span>
                 </p>
-                <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-subtle">
-                  structures filed
-                </p>
+                <p className="text-[11px] uppercase tracking-[0.18em] text-foreground-subtle">structures filed</p>
               </div>
             </div>
 
@@ -114,7 +107,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right column: editorial photograph with parallax */}
           <div className="lg:col-span-5">
             <div className="overflow-hidden rounded-[3px]">
               <div ref={parallaxRef} className="will-change-transform">
