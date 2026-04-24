@@ -56,7 +56,7 @@ const detail = [
     icon: Building2,
     title: 'Company registration',
     body:
-      'We draft the Memorandum and Articles of Association tailored to your use-case, file with the Cayman Registrar of Companies, and deliver the Certificate of Incorporation together with share certificates and the minute book \u2014 typically within 5\u201310 business days.',
+      'We draft the Memorandum and Articles of Association tailored to your use-case, file with the Cayman Registrar of Companies, and deliver the Certificate of Incorporation together with share certificates and the minute book — typically within 5–10 business days.',
   },
   {
     id: 'nominee',
@@ -70,14 +70,14 @@ const detail = [
     icon: Wallet,
     title: 'Bank account opening',
     body:
-      'We prepare a full KYC and source-of-funds pack and introduce your company to Tier-1 Cayman and international banks, EMIs and prime brokers. You meet the relationship manager \u2014 we handle the paperwork.',
+      'We prepare a full KYC and source-of-funds pack and introduce your company to Tier-1 Cayman and international banks, EMIs and prime brokers. You meet the relationship manager — we handle the paperwork.',
   },
   {
     id: 'compliance',
     icon: ShieldCheck,
     title: 'Ongoing compliance',
     body:
-      'Registered office, annual return, beneficial ownership updates, economic substance filings where applicable, and renewal with the Registrar \u2014 all handled on a fixed annual fee.',
+      'Registered office, annual return, beneficial ownership updates, economic substance filings where applicable, and renewal with the Registrar — all handled on a fixed annual fee.',
   },
 ];
 
@@ -106,7 +106,7 @@ export default function ServicesPage() {
             </h1>
             <p className="lg:col-span-4 text-foreground-muted leading-relaxed">
               A complete suite of corporate services delivered in-house by a licensed Cayman
-              Islands provider \u2014 from incorporation and banking through to ongoing compliance.
+              Islands provider — from incorporation and banking through to ongoing compliance.
             </p>
           </div>
         </Container>
