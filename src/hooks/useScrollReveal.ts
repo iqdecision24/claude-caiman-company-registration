@@ -25,12 +25,12 @@ export function useScrollReveal<T extends HTMLElement = HTMLDivElement>() {
       gsap.to(items, {
         opacity: 1,
         y: 0,
-        duration: 0.9,
+        duration: 1.1,
         ease: 'power3.out',
         stagger: 0.08,
         scrollTrigger: {
           trigger: ref.current,
-          start: 'top 80%',
+          start: 'top 82%',
           once: true,
         },
       });

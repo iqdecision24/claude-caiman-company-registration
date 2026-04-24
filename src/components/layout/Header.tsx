@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
@@ -17,9 +18,17 @@ const nav = [
 export function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 12);
+      const doc = document.documentElement;
+      const max = doc.scrollHeight - doc.clientHeight;
+      setProgress(max > 0 ? Math.min(1, y / max) : 0);
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -28,68 +37,84 @@ export function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-40 transition-all duration-300',
+        'sticky top-0 z-40 transition-all duration-500',
         scrolled
-          ? 'bg-white/75 backdrop-blur-md border-b border-border shadow-soft'
+          ? 'bg-background/85 backdrop-blur-xl border-b border-border/60'
           : 'bg-transparent',
       )}
     >
       <div className="container-wide flex h-20 items-center justify-between">
-        <Link href="/" className="group flex items-center gap-3">
-          <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand text-white font-display text-lg shadow-soft transition-transform duration-300 group-hover:scale-105">
-            C
+        <Link href="/" className="group flex items-baseline gap-2">
+          <span className="font-display text-[26px] tracking-tighter text-ink leading-none">
+            Cayman<span className="italic text-gold">.</span>
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="font-display text-lg text-foreground">Cayman Formation</span>
-            <span className="text-[11px] uppercase tracking-[0.2em] text-foreground-subtle">
-              Premium offshore
-            </span>
+          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.32em] text-foreground-subtle">
+            Est. MMXIV
           </span>
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="px-4 py-2 text-sm font-medium text-foreground-muted transition-colors hover:text-brand"
-            >
-              {item.label}
-            </Link>
-          ))}
+        <nav className="hidden lg:flex items-center gap-7">
+          {nav.map((item) => {
+            const active = item.href === '/'
+              ? pathname === '/'
+              : pathname?.startsWith(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                data-active={active ? 'true' : undefined}
+                className="nav-link"
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:flex items-center gap-3">
           <Button href="/contact" size="sm">
-            Get a consultation
+            Book a consultation
+            <ArrowUpRight size={14} />
           </Button>
         </div>
 
         <button
           type="button"
           aria-label="Toggle menu"
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border bg-white"
+          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-white"
           onClick={() => setOpen((v) => !v)}
         >
           {open ? <X size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
+      {/* Scroll progress bar */}
+      <div
+        aria-hidden
+        className="h-px w-full bg-transparent overflow-hidden"
+      >
+        <div
+          className="h-full origin-left bg-gold-line transition-transform duration-150 ease-out"
+          style={{ transform: `scaleX(${progress})` }}
+        />
+      </div>
+
       {open && (
-        <div className="lg:hidden border-t border-border bg-white">
-          <div className="container-wide py-4 flex flex-col gap-1">
+        <div className="lg:hidden border-t border-border bg-white/95 backdrop-blur-xl">
+          <div className="container-wide py-6 flex flex-col gap-1">
             {nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-sm font-medium text-foreground-muted hover:bg-background-muted hover:text-brand"
+                className="rounded-lg px-3 py-3 text-base font-display text-foreground hover:bg-background-muted"
               >
                 {item.label}
               </Link>
             ))}
-            <Button href="/contact" className="mt-2" size="md">
-              Get a consultation
+            <Button href="/contact" className="mt-4" size="md">
+              Book a consultation
+              <ArrowUpRight size={16} />
             </Button>
           </div>
         </div>

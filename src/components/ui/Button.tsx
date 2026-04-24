@@ -1,25 +1,26 @@
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
-type Variant = 'primary' | 'secondary' | 'ghost' | 'gold';
+type Variant = 'primary' | 'secondary' | 'ghost' | 'ink' | 'gold';
 type Size = 'sm' | 'md' | 'lg';
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-full font-medium transition-all duration-300 ease-out whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 disabled:opacity-50 disabled:cursor-not-allowed';
+  'group/btn relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full font-medium transition-all duration-500 ease-[cubic-bezier(.2,.7,.2,1)] whitespace-nowrap focus:outline-none focus-visible:ring-2 focus-visible:ring-brand/40 disabled:opacity-50 disabled:cursor-not-allowed';
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-brand text-white shadow-soft hover:bg-brand-dark hover:shadow-premium hover:-translate-y-0.5',
+    'bg-ink text-white shadow-premium hover:shadow-editorial hover:-translate-y-0.5 before:absolute before:inset-0 before:bg-brand before:scale-x-0 before:origin-left before:transition-transform before:duration-500 hover:before:scale-x-100 [&>*]:relative',
   secondary:
-    'bg-white text-foreground border border-border hover:border-brand/40 hover:text-brand hover:shadow-soft',
+    'bg-white text-foreground border border-border hover:border-gold/60 hover:text-ink hover:shadow-soft',
   ghost: 'text-foreground hover:text-brand',
+  ink: 'bg-white text-ink hover:bg-white/90',
   gold: 'bg-gold text-white hover:bg-gold/90 shadow-soft',
 };
 
 const sizes: Record<Size, string> = {
-  sm: 'text-sm px-4 py-2',
-  md: 'text-sm px-6 py-3',
-  lg: 'text-base px-8 py-4',
+  sm: 'text-sm px-5 py-2',
+  md: 'text-sm px-7 py-3.5',
+  lg: 'text-base px-9 py-4',
 };
 
 type CommonProps = {
