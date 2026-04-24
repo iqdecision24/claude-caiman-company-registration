@@ -24,7 +24,7 @@ export default function ContactPage() {
               </span>
             </div>
             <span className="hidden sm:block text-[11px] uppercase tracking-[0.32em] text-foreground-subtle">
-              Mon\u2013Fri · 09:00\u201318:00 EST
+              Mon–Fri · 09:00–18:00 EST
             </span>
           </div>
           <div className="grid gap-10 lg:grid-cols-12 lg:items-end">
@@ -74,7 +74,7 @@ export default function ContactPage() {
               <ContactCard
                 icon={Clock}
                 label="Hours"
-                value="Mon\u2013Fri · 09:00\u201318:00 (EST)"
+                value="Mon–Fri · 09:00–18:00 (EST)"
                 index="04"
               />
             </div>
