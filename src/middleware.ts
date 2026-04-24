@@ -1,17 +1,19 @@
-import { auth } from '@/lib/auth';
-import { NextResponse } from 'next/server';
+// Edge-safe middleware: uses auth.config.ts (no Prisma import).
+import NextAuth from 'next-auth';
+import { authConfig } from '@/lib/auth.config';
 
-export default auth((req) => {
+export const { auth: middleware } = NextAuth(authConfig);
+
+export default middleware((req) => {
   const isAdminPath = req.nextUrl.pathname.startsWith('/admin');
   const isLoggedIn = !!req.auth;
 
   if (isAdminPath && !isLoggedIn) {
     const url = new URL('/login', req.nextUrl.origin);
     url.searchParams.set('callbackUrl', req.nextUrl.pathname);
-    return NextResponse.redirect(url);
+    return Response.redirect(url);
   }
-
-  return NextResponse.next();
+  return undefined;
 });
 
 export const config = {

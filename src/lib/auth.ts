@@ -3,6 +3,7 @@ import Credentials from 'next-auth/providers/credentials';
 import bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import { prisma } from './prisma';
+import { authConfig } from './auth.config';
 
 declare module 'next-auth' {
   interface Session {
@@ -19,8 +20,7 @@ const credentialsSchema = z.object({
 });
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  session: { strategy: 'jwt' },
-  pages: { signIn: '/login' },
+  ...authConfig,
   providers: [
     Credentials({
       name: 'Credentials',
@@ -49,20 +49,4 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  callbacks: {
-    async jwt({ token, user }) {
-      if (user) {
-        token.id = (user as { id: string }).id;
-        token.role = (user as { role: 'ADMIN' | 'EDITOR' }).role;
-      }
-      return token;
-    },
-    async session({ session, token }) {
-      if (session.user) {
-        session.user.id = token.id as string;
-        session.user.role = token.role as 'ADMIN' | 'EDITOR';
-      }
-      return session;
-    },
-  },
 });
