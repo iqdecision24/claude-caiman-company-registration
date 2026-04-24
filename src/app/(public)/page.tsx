@@ -14,8 +14,7 @@ export default function HomePage() {
       <Services />
       <Stats />
       <About />
-      {/* LatestPosts is a server component reading from Neon */}
-      {/* @ts-expect-error Async Server Component */}
+      {/* LatestPosts is an async server component that reads from Neon */}
       <LatestPosts />
       <CTA />
     </>
