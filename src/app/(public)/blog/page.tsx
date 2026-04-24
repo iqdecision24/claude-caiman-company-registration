@@ -49,7 +49,7 @@ export default async function BlogPage() {
             </h1>
             <p className="lg:col-span-4 text-foreground-muted leading-relaxed">
               Guides, comparisons and updates on Cayman Islands structures, banking and
-              compliance \u2014 written by our partners.
+              compliance — written by our partners.
             </p>
           </div>
         </Container>
