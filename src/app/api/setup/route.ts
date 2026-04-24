@@ -4,7 +4,7 @@ import { prisma } from '@/lib/prisma';
 
 // Idempotent bootstrap endpoint.
 // - Creates (or refreshes) the admin user from ADMIN_EMAIL / ADMIN_PASSWORD.
-// - Seeds 3 demo posts only if the blog is empty.
+// - Upserts 3 demo posts by slug — calling this again refreshes their content.
 // - Safe to call multiple times. Requires the request to match AUTH_SECRET via
 //   the ?secret= query param OR the Authorization: Bearer <secret> header.
 
@@ -59,59 +59,58 @@ async function runSetup(req: Request) {
     },
   });
 
-  // Seed demo posts only if the blog is empty.
-  const existingPosts = await prisma.post.count();
-  let seededPosts = 0;
+  const samplePosts = [
+    {
+      slug: 'why-cayman-islands',
+      title: 'Why the Cayman Islands are the gold standard for offshore companies',
+      excerpt:
+        'A deep dive into the structural, fiscal and reputational advantages that have made Cayman the jurisdiction of choice for global capital.',
+      content:
+        '<p>The Cayman Islands combine <strong>0% corporate tax</strong>, political stability and a sophisticated regulatory framework aligned with OECD and FATF standards. For international holding structures, investment funds and fintech ventures, the jurisdiction offers unmatched credibility.</p><p>In this article we walk through the most common vehicles — Exempted Company, LLC, SPC — and when each is the right fit.</p>',
+      imageUrl:
+        'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80',
+      published: true,
+    },
+    {
+      slug: 'exempted-company-vs-llc',
+      title: 'Exempted Company vs. Cayman LLC: which vehicle suits your business?',
+      excerpt:
+        'Both structures grant flexibility and tax neutrality, but differ in governance, reporting and investor expectations.',
+      content:
+        '<p>The <em>Exempted Company</em> remains the classic choice for funds and holding structures, while the <em>Cayman LLC</em> echoes the familiar Delaware LLC model for US-centric deals.</p><p>We compare formation timelines, costs, and real-world use cases.</p>',
+      imageUrl:
+        'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80',
+      published: true,
+    },
+    {
+      slug: 'opening-a-cayman-bank-account',
+      title: 'Opening a bank account for a Cayman company in 2026',
+      excerpt:
+        'A practical playbook — what banks expect, KYC checklist, timelines and alternatives (EMIs, prime brokers).',
+      content:
+        '<p>Banking is the single biggest bottleneck for offshore entities. This guide lists every document you will need, how to present the source of funds, and which institutions currently onboard Cayman structures.</p>',
+      imageUrl:
+        'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80',
+      published: true,
+    },
+  ];
 
-  if (existingPosts === 0) {
-    const samplePosts = [
-      {
-        slug: 'why-cayman-islands',
-        title: 'Why the Cayman Islands are the gold standard for offshore companies',
-        excerpt:
-          'A deep dive into the structural, fiscal and reputational advantages that have made Cayman the jurisdiction of choice for global capital.',
-        content:
-          '<p>The Cayman Islands combine <strong>0% corporate tax</strong>, political stability and a sophisticated regulatory framework aligned with OECD and FATF standards. For international holding structures, investment funds and fintech ventures, the jurisdiction offers unmatched credibility.</p><p>In this article we walk through the most common vehicles — Exempted Company, LLC, SPC — and when each is the right fit.</p>',
-        imageUrl:
-          'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=1600&q=80',
-        published: true,
-      },
-      {
-        slug: 'exempted-company-vs-llc',
-        title: 'Exempted Company vs. Cayman LLC: which vehicle suits your business?',
-        excerpt:
-          'Both structures grant flexibility and tax neutrality, but differ in governance, reporting and investor expectations.',
-        content:
-          '<p>The <em>Exempted Company</em> remains the classic choice for funds and holding structures, while the <em>Cayman LLC</em> echoes the familiar Delaware LLC model for US-centric deals.</p><p>We compare formation timelines, costs, and real-world use cases.</p>',
-        imageUrl:
-          'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80',
-        published: true,
-      },
-      {
-        slug: 'opening-a-cayman-bank-account',
-        title: 'Opening a bank account for a Cayman company in 2026',
-        excerpt:
-          'A practical playbook — what banks expect, KYC checklist, timelines and alternatives (EMIs, prime brokers).',
-        content:
-          '<p>Banking is the single biggest bottleneck for offshore entities. This guide lists every document you will need, how to present the source of funds, and which institutions currently onboard Cayman structures.</p>',
-        imageUrl:
-          'https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80',
-        published: true,
-      },
-    ];
-
-    for (const post of samplePosts) {
-      await prisma.post.create({ data: { ...post, authorId: admin.id } });
-    }
-    seededPosts = samplePosts.length;
+  let refreshed = 0;
+  for (const post of samplePosts) {
+    await prisma.post.upsert({
+      where: { slug: post.slug },
+      update: post,
+      create: { ...post, authorId: admin.id },
+    });
+    refreshed += 1;
   }
 
   return NextResponse.json({
     ok: true,
     admin: { email: admin.email, id: admin.id },
-    posts: { existing: existingPosts, seeded: seededPosts },
+    posts: { refreshed },
     message:
-      'Setup complete. You can now sign in at /login with ADMIN_EMAIL / ADMIN_PASSWORD.',
+      'Setup complete. Admin ready and demo posts refreshed. Sign in at /login.',
   });
 }
 
