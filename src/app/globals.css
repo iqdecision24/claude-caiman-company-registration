@@ -32,30 +32,15 @@
     color: #0B1220;
   }
 
-  ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-  }
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: rgba(11, 18, 32, 0.15);
-    border-radius: 999px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(11, 18, 32, 0.3);
-  }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(11, 18, 32, 0.15); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(11, 18, 32, 0.3); }
 }
 
 @layer components {
-  .container-narrow {
-    @apply mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10;
-  }
-
-  .container-wide {
-    @apply mx-auto w-full max-w-[1320px] px-6 sm:px-8 lg:px-10;
-  }
+  .container-narrow { @apply mx-auto w-full max-w-5xl px-6 sm:px-8 lg:px-10; }
+  .container-wide  { @apply mx-auto w-full max-w-[1320px] px-6 sm:px-8 lg:px-10; }
 
   .card-editorial {
     @apply relative rounded-[20px] border border-border bg-white/80 p-8 backdrop-blur-sm;
@@ -68,50 +53,18 @@
     border-color: rgba(178, 140, 71, 0.35);
   }
 
-  /* Decorative hairlines */
-  .hairline {
-    @apply block h-px w-12;
-    background: linear-gradient(90deg, #B28C47 0%, #D9BF84 100%);
-  }
-  .hairline-full {
-    @apply block h-px w-full;
-    background: linear-gradient(90deg, transparent 0%, rgba(178,140,71,0.5) 20%, rgba(178,140,71,0.5) 80%, transparent 100%);
-  }
+  .hairline { @apply block h-px w-12; background: linear-gradient(90deg, #B28C47 0%, #D9BF84 100%); }
+  .hairline-full { @apply block h-px w-full; background: linear-gradient(90deg, transparent 0%, rgba(178,140,71,0.5) 20%, rgba(178,140,71,0.5) 80%, transparent 100%); }
 
-  /* Editorial labels (eyebrows) */
-  .eyebrow {
-    @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase text-foreground-muted;
-    letter-spacing: 0.28em;
-  }
-  .eyebrow::before {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: #B28C47;
-    display: inline-block;
-  }
-  .eyebrow-alt {
-    @apply inline-block text-[11px] font-medium uppercase text-gold;
-    letter-spacing: 0.28em;
-  }
+  .eyebrow { @apply inline-flex items-center gap-3 text-[11px] font-medium uppercase text-foreground-muted; letter-spacing: 0.28em; }
+  .eyebrow::before { content: ''; width: 28px; height: 1px; background: #B28C47; display: inline-block; }
+  .eyebrow-alt { @apply inline-block text-[11px] font-medium uppercase text-gold; letter-spacing: 0.28em; }
 
-  /* Numbered chapter indicator */
-  .chapter-num {
-    @apply inline-block font-serif italic text-gold;
-    font-weight: 500;
-    font-feature-settings: 'onum';
-  }
+  .chapter-num { @apply inline-block font-serif italic text-gold; font-weight: 500; font-feature-settings: 'onum'; }
 
-  /* Pull-quote for editorial accent */
-  .pullquote {
-    @apply font-serif italic text-foreground text-2xl sm:text-3xl leading-snug;
-    letter-spacing: -0.01em;
-  }
+  .pullquote { @apply font-serif italic text-foreground text-2xl sm:text-3xl leading-snug; letter-spacing: -0.01em; }
 
-  /* Article prose (blog posts) */
-  .prose-article {
-    @apply text-foreground-muted leading-relaxed;
-  }
+  .prose-article { @apply text-foreground-muted leading-relaxed; }
   .prose-article h2 { @apply mt-14 mb-4 text-2xl sm:text-3xl font-display text-foreground; }
   .prose-article h3 { @apply mt-10 mb-3 text-xl font-display text-foreground; }
   .prose-article p  { @apply my-5 text-base sm:text-lg; }
@@ -119,55 +72,31 @@
   .prose-article ul { @apply list-disc pl-6 my-5 space-y-2; }
   .prose-article strong { @apply text-foreground; }
   .prose-article img { @apply my-10 rounded-2xl shadow-soft; }
-  .prose-article blockquote {
-    @apply my-8 pl-6 border-l-2 border-gold italic text-foreground font-serif text-xl;
-  }
+  .prose-article blockquote { @apply my-8 pl-6 border-l-2 border-gold italic text-foreground font-serif text-xl; }
 
-  /* Animated underline on nav links */
-  .nav-link {
-    @apply relative inline-block px-0.5 py-2 text-sm font-medium text-foreground-muted transition-colors;
-  }
+  .nav-link { @apply relative inline-block px-0.5 py-2 text-sm font-medium text-foreground-muted transition-colors; }
   .nav-link::after {
     content: '';
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    left: 0; right: 0; bottom: 0;
     height: 1px;
     background: #B28C47;
     transform: scaleX(0);
     transform-origin: right center;
     transition: transform 420ms cubic-bezier(.2,.7,.2,1);
   }
-  .nav-link:hover {
-    @apply text-foreground;
-  }
-  .nav-link:hover::after,
-  .nav-link[data-active="true"]::after {
-    transform: scaleX(1);
-    transform-origin: left center;
-  }
-  .nav-link[data-active="true"] {
-    @apply text-foreground;
-  }
+  .nav-link:hover { @apply text-foreground; }
+  .nav-link:hover::after, .nav-link[data-active="true"]::after { transform: scaleX(1); transform-origin: left center; }
+  .nav-link[data-active="true"] { @apply text-foreground; }
 
-  /* Counter number used in stats */
-  .counter {
-    font-feature-settings: 'tnum';
-    font-variant-numeric: tabular-nums;
-  }
+  .counter { font-feature-settings: 'tnum'; font-variant-numeric: tabular-nums; }
 
-  /* Dropcap for editorial body */
   .dropcap::first-letter {
     @apply font-display text-gold;
-    font-size: 3.5em;
-    float: left;
-    line-height: 0.9;
-    padding-right: 0.1em;
-    padding-top: 0.08em;
+    font-size: 3.5em; float: left; line-height: 0.9;
+    padding-right: 0.1em; padding-top: 0.08em;
   }
 
-  /* Dark section ambient glow */
   .ink-section {
     @apply relative overflow-hidden;
     background: linear-gradient(160deg, #05080F 0%, #0B1220 50%, #0D2E8C 160%);
@@ -175,8 +104,7 @@
   }
   .ink-section::before {
     content: '';
-    position: absolute;
-    inset: 0;
+    position: absolute; inset: 0;
     background:
       radial-gradient(800px 400px at 10% 10%, rgba(178, 140, 71, 0.12), transparent 60%),
       radial-gradient(700px 380px at 90% 90%, rgba(46, 123, 230, 0.22), transparent 60%);
@@ -190,16 +118,52 @@
 }
 
 /* GSAP reveal base states */
-[data-reveal] {
+[data-reveal] { opacity: 0; transform: translateY(28px); }
+[data-split-word] { display: inline-block; overflow: hidden; vertical-align: baseline; }
+[data-split-word] > span { display: inline-block; transform: translateY(110%); }
+
+/* ==================================================================
+   Logo — draw-in animation on mount
+   ================================================================== */
+.logo-anim .logo-ring {
+  stroke-dasharray: 113;
+  stroke-dashoffset: 113;
+  animation: logoRing 1s 0.15s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.logo-anim .logo-water {
+  stroke-dasharray: 26;
+  stroke-dashoffset: 26;
+  animation: logoLine 0.55s 0.75s cubic-bezier(.2,.7,.2,1) forwards;
+}
+.logo-anim .logo-sun {
   opacity: 0;
-  transform: translateY(28px);
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translateY(4px) scale(0.7);
+  animation: logoSun 0.7s 1.05s cubic-bezier(.2,.7,.2,1) forwards;
 }
-[data-split-word] {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: baseline;
+.logo-anim .logo-ripple {
+  opacity: 0;
+  animation: logoFade 0.5s 1.25s cubic-bezier(.2,.7,.2,1) forwards;
 }
-[data-split-word] > span {
-  display: inline-block;
-  transform: translateY(110%);
+.logo-anim .logo-north {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.4);
+  animation: logoPop 0.55s 1.45s cubic-bezier(.2,.7,.2,1) forwards;
 }
+.logo-anim:hover .logo-sun {
+  transform: translateY(-2px) scale(1.06);
+  transition: transform 500ms cubic-bezier(.2,.7,.2,1);
+}
+.logo-anim:hover .logo-ripple {
+  opacity: 0.75;
+  transition: opacity 500ms;
+}
+
+@keyframes logoRing { to { stroke-dashoffset: 0; } }
+@keyframes logoLine { to { stroke-dashoffset: 0; } }
+@keyframes logoSun  { to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes logoFade { to { opacity: 0.55; } }
+@keyframes logoPop  { to { opacity: 1; transform: scale(1); } }

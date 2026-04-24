@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { Logo } from '@/components/brand/Logo';
 import { cn } from '@/lib/utils';
 
 const nav = [
@@ -44,13 +45,8 @@ export function Header() {
       )}
     >
       <div className="container-wide flex h-20 items-center justify-between">
-        <Link href="/" className="group flex items-baseline gap-2">
-          <span className="font-display text-[26px] tracking-tighter text-ink leading-none">
-            Cayman<span className="italic text-gold">.</span>
-          </span>
-          <span className="hidden sm:inline text-[10px] uppercase tracking-[0.32em] text-foreground-subtle">
-            Est. MMXIV
-          </span>
+        <Link href="/" className="group" aria-label="Cayman Formation home">
+          <Logo size={34} animated />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-7">
@@ -88,11 +84,7 @@ export function Header() {
         </button>
       </div>
 
-      {/* Scroll progress bar */}
-      <div
-        aria-hidden
-        className="h-px w-full bg-transparent overflow-hidden"
-      >
+      <div aria-hidden className="h-px w-full bg-transparent overflow-hidden">
         <div
           className="h-full origin-left bg-gold-line transition-transform duration-150 ease-out"
           style={{ transform: `scaleX(${progress})` }}

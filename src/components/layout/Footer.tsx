@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
 import { CopyPill } from '@/components/interactive/CopyPill';
+import { Logo } from '@/components/brand/Logo';
 
 export function Footer() {
   return (
@@ -8,13 +9,8 @@ export function Footer() {
       <div className="container-wide relative pt-20 pb-10">
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <Link href="/" className="inline-flex items-baseline gap-2">
-              <span className="font-display text-[30px] tracking-tighter text-white leading-none">
-                Cayman<span className="italic text-gold-light">.</span>
-              </span>
-              <span className="text-[10px] uppercase tracking-[0.32em] text-white/50">
-                Est. MMXIV
-              </span>
+            <Link href="/" className="group" aria-label="Cayman Formation home">
+              <Logo size={46} tone="light" animated />
             </Link>
             <p className="mt-8 max-w-md text-white/65 leading-relaxed">
               A Cayman-Islands boutique corporate services firm. Exempted companies, LLCs,
@@ -28,9 +24,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/45">
-              Navigate
-            </h4>
+            <h4 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/45">Navigate</h4>
             <ul className="mt-5 space-y-3 text-sm">
               <FooterLink href="/services">Services</FooterLink>
               <FooterLink href="/about">About</FooterLink>
@@ -40,9 +34,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-2">
-            <h4 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/45">
-              Services
-            </h4>
+            <h4 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/45">Services</h4>
             <ul className="mt-5 space-y-3 text-sm text-white/70">
               <li>Exempted Companies</li>
               <li>Cayman LLC</li>
@@ -53,9 +45,7 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h4 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/45">
-              Contact
-            </h4>
+            <h4 className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/45">Contact</h4>
             <ul className="mt-5 space-y-4 text-sm text-white/80">
               <li className="flex gap-3">
                 <Mail size={15} className="mt-0.5 text-gold-light shrink-0" />
@@ -89,15 +79,9 @@ export function Footer() {
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <li>
-      <Link
-        href={href}
-        className="group inline-flex items-center gap-1.5 text-white/70 transition-colors hover:text-white"
-      >
+      <Link href={href} className="group inline-flex items-center gap-1.5 text-white/70 transition-colors hover:text-white">
         {children}
-        <ArrowUpRight
-          size={12}
-          className="opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0"
-        />
+        <ArrowUpRight size={12} className="opacity-0 -translate-x-1 transition-all duration-300 group-hover:opacity-100 group-hover:translate-x-0" />
       </Link>
     </li>
   );
