@@ -10,7 +10,7 @@ const benefits = [
   { icon: BadgePercent, title: '0% corporate tax', text: 'No income, capital gains, withholding or corporation tax on Cayman-exempt entities.' },
   { icon: Lock, title: 'Full confidentiality', text: 'No public register of beneficial owners; shareholder data held under strict data protection.' },
   { icon: FileText, title: 'No audit filings', text: 'Exempted companies are exempt from filing annual accounts with the Registrar.' },
-  { icon: Globe2, title: 'Global prestige', text: 'One of the most recognised financial jurisdictions \u2014 trusted by Fortune 500s and top-tier funds.' },
+  { icon: Globe2, title: 'Global prestige', text: 'One of the most recognised financial jurisdictions — trusted by Fortune 500s and top-tier funds.' },
   { icon: Banknote, title: 'Banking ecosystem', text: 'Access to Tier-1 private and corporate banks, EMIs and prime brokers familiar with Cayman structures.' },
   { icon: Scale, title: 'Stable common law', text: 'English common law, Privy Council as final court of appeal, politically and economically stable.' },
 ];
@@ -25,7 +25,7 @@ export function Benefits() {
           <SectionHeading
             eyebrow="Why Cayman"
             title={<>The gold standard for offshore structuring</>}
-            description="Cayman Islands combine fiscal neutrality, political stability and a sophisticated regulatory framework \u2014 aligned with OECD and FATF \u2014 that give your structure instant credibility."
+            description="Cayman Islands combine fiscal neutrality, political stability and a sophisticated regulatory framework — aligned with OECD and FATF — that give your structure instant credibility."
             align="center"
           />
         </div>

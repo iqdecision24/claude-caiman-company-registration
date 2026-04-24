@@ -47,7 +47,7 @@ export function LoginForm() {
       </label>
       {error && <p className="text-sm text-red-600">{error}</p>}
       <Button type="submit" disabled={loading} size="lg">
-        {loading ? 'Signing in\u2026' : 'Sign in'}
+        {loading ? 'Signing in…' : 'Sign in'}
         <LogIn size={16} />
       </Button>
     </form>

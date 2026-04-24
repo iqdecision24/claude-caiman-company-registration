@@ -45,7 +45,7 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="container-wide py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-foreground-subtle">
-          <p>\u00a9 {new Date().getFullYear()} Cayman Formation. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Cayman Formation. All rights reserved.</p>
           <p>Licensed Cayman Islands corporate services provider.</p>
         </div>
       </div>

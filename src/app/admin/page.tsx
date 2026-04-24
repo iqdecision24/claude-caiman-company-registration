@@ -15,7 +15,7 @@ export default async function AdminDashboard() {
       prisma.post.count({ where: { published: false } }),
     ]);
   } catch {
-    // DB not configured yet \u2014 render zeros so the page still works
+    // DB not configured yet — render zeros so the page still works
   }
 
   const stats = [

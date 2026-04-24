@@ -63,7 +63,7 @@ export function ContactForm() {
 
       <div className="mt-2 flex items-center gap-3">
         <Button type="submit" size="lg" disabled={status === 'sending'}>
-          {status === 'sending' ? 'Sending\u2026' : 'Send request'}
+          {status === 'sending' ? 'Sending…' : 'Send request'}
           <Send size={16} />
         </Button>
         <p className="text-xs text-foreground-subtle">We respond within one business day.</p>

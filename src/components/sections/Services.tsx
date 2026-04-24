@@ -11,7 +11,7 @@ const services = [
   {
     icon: Building2,
     title: 'Company registration',
-    text: 'Exempted Company, Cayman LLC, Segregated Portfolio Company \u2014 drafted, filed and registered end-to-end.',
+    text: 'Exempted Company, Cayman LLC, Segregated Portfolio Company — drafted, filed and registered end-to-end.',
     href: '/services#registration',
     price: 'from $3,500',
   },
@@ -25,7 +25,7 @@ const services = [
   {
     icon: Wallet,
     title: 'Bank account opening',
-    text: 'Introduction to Tier-1 Cayman & international banks, EMIs and prime brokers \u2014 we prepare the full KYC pack.',
+    text: 'Introduction to Tier-1 Cayman & international banks, EMIs and prime brokers — we prepare the full KYC pack.',
     href: '/services#banking',
     price: 'from $2,400',
   },
@@ -48,7 +48,7 @@ export function Services() {
           <SectionHeading
             eyebrow="What we do"
             title={<>Turnkey corporate services, crafted for Cayman</>}
-            description="A single point of contact for the full life-cycle of your Cayman structure \u2014 from incorporation to ongoing compliance."
+            description="A single point of contact for the full life-cycle of your Cayman structure — from incorporation to ongoing compliance."
           />
         </div>
 

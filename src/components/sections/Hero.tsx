@@ -43,7 +43,7 @@ export function Hero() {
             className="inline-flex items-center gap-2 rounded-full border border-border bg-white/80 px-4 py-1.5 text-xs font-medium tracking-[0.18em] uppercase text-foreground-muted shadow-soft"
           >
             <Sparkles size={14} className="text-gold" />
-            Premium offshore formation \u2014 Cayman Islands
+            Premium offshore formation — Cayman Islands
           </div>
 
           <h1
@@ -60,7 +60,7 @@ export function Hero() {
               </span>
             </span>
             <span className="block text-foreground-muted text-[0.5em] sm:text-[0.45em] font-sans font-normal mt-6 max-w-2xl mx-auto">
-              0% corporate tax \u00b7 Full confidentiality \u00b7 Global prestige
+              0% corporate tax · Full confidentiality · Global prestige
             </span>
           </h1>
 
@@ -69,7 +69,7 @@ export function Hero() {
             className="mx-auto mt-8 max-w-2xl text-lg leading-relaxed text-foreground-muted"
           >
             Exempted companies, LLCs and SPCs incorporated turnkey by a licensed Cayman corporate
-            services provider. Nominee directors, bank accounts, compliance \u2014 all handled.
+            services provider. Nominee directors, bank accounts, compliance — all handled.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">

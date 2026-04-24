@@ -28,7 +28,7 @@ export async function LatestPosts() {
           <SectionHeading
             eyebrow="Insights"
             title={<>Latest from our desk</>}
-            description="Playbooks on Cayman structures, banking and compliance \u2014 written by our partners."
+            description="Playbooks on Cayman structures, banking and compliance — written by our partners."
           />
           <Link
             href="/blog"

@@ -25,7 +25,7 @@ export function CTA() {
             </h3>
             <p className="mt-5 text-white/70 text-lg leading-relaxed">
               Book a confidential consultation with a senior partner. We will map the right
-              structure, timeline and banking plan for your situation \u2014 free of charge.
+              structure, timeline and banking plan for your situation — free of charge.
             </p>
             <div className="mt-9 flex flex-col sm:flex-row gap-3">
               <Button href="/contact" size="lg" className="bg-white text-foreground hover:bg-white/90">
