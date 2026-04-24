@@ -28,7 +28,7 @@ export async function LatestPosts() {
         <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:items-end">
           <div className="max-w-3xl">
             <div className="flex items-baseline gap-3 mb-4">
-              <span className="chapter-num text-base">VI.</span>
+              <span className="chapter-num text-base">VIII.</span>
               <span className="eyebrow-alt">Insights</span>
             </div>
             <h2 className="font-display text-display-lg text-ink text-balance">
@@ -44,11 +44,7 @@ export async function LatestPosts() {
         </div>
 
         <div className="mt-16 grid gap-10 lg:grid-cols-12">
-          {/* Featured */}
-          <Link
-            href={`/blog/${featured.slug}`}
-            className="group lg:col-span-7 block"
-          >
+          <Link href={`/blog/${featured.slug}`} className="group lg:col-span-7 block">
             <figure className="relative aspect-[16/11] w-full overflow-hidden rounded-[3px]">
               {featured.imageUrl ? (
                 <Image
@@ -86,7 +82,6 @@ export async function LatestPosts() {
             </span>
           </Link>
 
-          {/* Side list */}
           <div className="lg:col-span-5 grid gap-8">
             {rest.map((p, i) => (
               <Link

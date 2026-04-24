@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowUpRight } from 'lucide-react';
+import { CopyPill } from '@/components/interactive/CopyPill';
 
 export function Footer() {
   return (
@@ -58,17 +59,19 @@ export function Footer() {
             <ul className="mt-5 space-y-4 text-sm text-white/80">
               <li className="flex gap-3">
                 <Mail size={15} className="mt-0.5 text-gold-light shrink-0" />
-                <a href="mailto:hello@cayman-formation.com" className="hover:text-white">
-                  hello@cayman-formation.com
-                </a>
+                <CopyPill value="hello@cayman-formation.com" />
               </li>
               <li className="flex gap-3">
                 <Phone size={15} className="mt-0.5 text-gold-light shrink-0" />
-                +1 345 000 0000
+                <CopyPill value="+1 345 000 0000" />
               </li>
               <li className="flex gap-3">
                 <MapPin size={15} className="mt-0.5 text-gold-light shrink-0" />
-                Cricket Square, George Town,<br />Grand Cayman KY1-1000
+                <span>
+                  Cricket Square, George Town,
+                  <br />
+                  Grand Cayman KY1-1000
+                </span>
               </li>
             </ul>
           </div>

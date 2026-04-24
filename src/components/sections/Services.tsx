@@ -5,6 +5,7 @@ import { Building2, UserCircle2, Wallet, ShieldCheck, ArrowUpRight } from 'lucid
 import { Container } from '@/components/ui/Container';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { SpotlightCard } from '@/components/interactive/SpotlightCard';
 
 const services = [
   {
@@ -73,16 +74,11 @@ export function Services() {
         <div className="mt-16 grid gap-5 md:grid-cols-2">
           {services.map(({ icon: Icon, ...s }) => (
             <div key={s.title} data-reveal>
-              <Link
-                href={s.href}
-                className="group relative block h-full card-editorial overflow-hidden"
-              >
-                {/* Decorative corner numeral */}
-                <span className="absolute right-6 top-6 font-serif italic text-[64px] leading-none text-gold/20 group-hover:text-gold/35 transition-colors duration-500 select-none">
-                  {s.n}
-                </span>
-
-                <div className="relative flex h-full flex-col">
+              <SpotlightCard className="card-editorial h-full">
+                <Link href={s.href} className="relative flex h-full flex-col">
+                  <span className="absolute right-0 top-0 font-serif italic text-[64px] leading-none text-gold/20 group-hover:text-gold/35 transition-colors duration-500 select-none">
+                    {s.n}
+                  </span>
                   <div className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-white text-ink transition-colors duration-500 group-hover:border-gold group-hover:text-gold">
                     <Icon size={18} />
                   </div>
@@ -93,16 +89,14 @@ export function Services() {
                     {s.text}
                   </p>
                   <div className="mt-8 flex items-center justify-between pt-6 border-t border-border">
-                    <span className="font-serif italic text-gold text-lg">
-                      {s.price}
-                    </span>
+                    <span className="font-serif italic text-gold text-lg">{s.price}</span>
                     <span className="inline-flex items-center gap-1.5 text-sm font-medium text-ink group-hover:translate-x-1 transition-transform duration-500">
                       Learn more
                       <ArrowUpRight size={14} />
                     </span>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </SpotlightCard>
             </div>
           ))}
         </div>

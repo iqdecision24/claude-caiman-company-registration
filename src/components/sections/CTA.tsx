@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { Container } from '@/components/ui/Container';
 import { Button } from '@/components/ui/Button';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
+import { MagneticButton } from '@/components/interactive/MagneticButton';
 
 export function CTA() {
   const ref = useScrollReveal<HTMLElement>();
@@ -17,7 +18,7 @@ export function CTA() {
         >
           <div className="relative max-w-4xl">
             <div className="flex items-baseline gap-3 mb-8">
-              <span className="chapter-num text-base text-gold-light">VII.</span>
+              <span className="chapter-num text-base text-gold-light">IX.</span>
               <span className="text-[11px] uppercase tracking-[0.28em] text-white/55">
                 Next step
               </span>
@@ -32,10 +33,12 @@ export function CTA() {
               structure, timeline and banking plan for your situation — at no charge.
             </p>
             <div className="mt-12 flex flex-col sm:flex-row items-start gap-4">
-              <Button href="/contact" variant="ink" size="lg">
-                Book a consultation
-                <ArrowRight size={18} />
-              </Button>
+              <MagneticButton strength={0.3}>
+                <Button href="/contact" variant="ink" size="lg">
+                  Book a consultation
+                  <ArrowRight size={18} />
+                </Button>
+              </MagneticButton>
               <Button
                 href="/services"
                 variant="ghost"
@@ -47,7 +50,6 @@ export function CTA() {
             </div>
           </div>
 
-          {/* Decorative massive numeral */}
           <span
             aria-hidden
             className="pointer-events-none absolute -right-8 -bottom-24 font-serif italic text-[400px] leading-none text-white/[0.04] select-none"

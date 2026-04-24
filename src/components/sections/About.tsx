@@ -20,7 +20,6 @@ export function About() {
     <section ref={ref} id="about" className="relative py-28 sm:py-40">
       <Container wide>
         <div className="grid gap-16 lg:grid-cols-12 lg:gap-14">
-          {/* Portrait */}
           <div data-reveal className="lg:col-span-5">
             <figure className="relative aspect-[4/5] w-full overflow-hidden rounded-[3px] shadow-editorial">
               <Image
@@ -34,16 +33,13 @@ export function About() {
             </figure>
             <div className="mt-6 flex items-end justify-between text-[11px] uppercase tracking-[0.28em] text-foreground-muted">
               <span>George Town · Grand Cayman</span>
-              <span className="font-serif italic text-gold text-[13px] tracking-normal">
-                n° 02
-              </span>
+              <span className="font-serif italic text-gold text-[13px] tracking-normal">n° 02</span>
             </div>
           </div>
 
-          {/* Text */}
           <div data-reveal className="lg:col-span-7 lg:pt-10">
             <div className="flex items-baseline gap-3 mb-6">
-              <span className="chapter-num text-base">V.</span>
+              <span className="chapter-num text-base">VI.</span>
               <span className="eyebrow-alt">About</span>
             </div>
             <h2 className="font-display text-display-lg text-ink text-balance">
