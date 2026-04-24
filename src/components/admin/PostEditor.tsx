@@ -9,7 +9,6 @@ import Image from '@tiptap/extension-image';
 import {
   Bold, Italic, List, ListOrdered, Heading2, Heading3,
   Quote, Undo2, Redo2, Link as LinkIcon, Image as ImageIcon,
-  ImagePlus,
 } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { makeSlug } from '@/lib/utils';
@@ -130,7 +129,7 @@ export function PostEditor({ post }: { post?: Initial }) {
           rows={2}
           value={excerpt ?? ''}
           onChange={(e) => setExcerpt(e.target.value)}
-          placeholder="Short summary for the blog index (1\u20132 sentences)"
+          placeholder="Short summary for the blog index (1–2 sentences)"
         />
       </div>
 
@@ -143,7 +142,7 @@ export function PostEditor({ post }: { post?: Initial }) {
             className={inputCls}
             value={imageUrl ?? ''}
             onChange={(e) => setImageUrl(e.target.value)}
-            placeholder="https://\u2026 or upload"
+            placeholder="https://… or upload"
           />
           <ImageUpload
             folder="cayman-formation/covers"
@@ -230,7 +229,7 @@ export function PostEditor({ post }: { post?: Initial }) {
 
       <div className="flex items-center gap-3">
         <Button onClick={save} disabled={saving || !title}>
-          {saving ? 'Saving\u2026' : editing ? 'Update post' : 'Create post'}
+          {saving ? 'Saving…' : editing ? 'Update post' : 'Create post'}
         </Button>
         <Button variant="secondary" onClick={() => router.push('/admin/posts')}>
           Cancel
