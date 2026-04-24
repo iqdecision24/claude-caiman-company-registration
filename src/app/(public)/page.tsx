@@ -6,6 +6,11 @@ import { About } from '@/components/sections/About';
 import { LatestPosts } from '@/components/sections/LatestPosts';
 import { CTA } from '@/components/sections/CTA';
 
+// LatestPosts reads from Neon at request time.
+// force-dynamic avoids prerendering when env vars are absent at build time
+// and ensures fresh data for each visit.
+export const dynamic = 'force-dynamic';
+
 export default function HomePage() {
   return (
     <>
@@ -14,7 +19,6 @@ export default function HomePage() {
       <Services />
       <Stats />
       <About />
-      {/* LatestPosts is an async server component that reads from Neon */}
       <LatestPosts />
       <CTA />
     </>

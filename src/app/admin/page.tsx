@@ -5,11 +5,18 @@ import { prisma } from '@/lib/prisma';
 export const dynamic = 'force-dynamic';
 
 export default async function AdminDashboard() {
-  const [total, published, drafts] = await Promise.all([
-    prisma.post.count(),
-    prisma.post.count({ where: { published: true } }),
-    prisma.post.count({ where: { published: false } }),
-  ]).catch(() => [0, 0, 0]);
+  let total = 0;
+  let published = 0;
+  let drafts = 0;
+  try {
+    [total, published, drafts] = await Promise.all([
+      prisma.post.count(),
+      prisma.post.count({ where: { published: true } }),
+      prisma.post.count({ where: { published: false } }),
+    ]);
+  } catch {
+    // DB not configured yet \u2014 render zeros so the page still works
+  }
 
   const stats = [
     { label: 'Total posts', value: total, icon: FileText },

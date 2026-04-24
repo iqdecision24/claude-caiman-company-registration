@@ -7,19 +7,24 @@ import { prisma } from '@/lib/prisma';
 import { Container } from '@/components/ui/Container';
 import { formatDate } from '@/lib/utils';
 
-export const revalidate = 60;
+// Rendered at request time so build does not require a live DB.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> },
 ): Promise<Metadata> {
   const { slug } = await params;
-  const post = await prisma.post.findUnique({ where: { slug } });
-  if (!post) return { title: 'Article not found' };
-  return {
-    title: post.title,
-    description: post.excerpt ?? undefined,
-    openGraph: { images: post.imageUrl ? [post.imageUrl] : undefined },
-  };
+  try {
+    const post = await prisma.post.findUnique({ where: { slug } });
+    if (!post) return { title: 'Article not found' };
+    return {
+      title: post.title,
+      description: post.excerpt ?? undefined,
+      openGraph: { images: post.imageUrl ? [post.imageUrl] : undefined },
+    };
+  } catch {
+    return { title: 'Article' };
+  }
 }
 
 export default async function BlogPostPage({
@@ -28,7 +33,12 @@ export default async function BlogPostPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const post = await prisma.post.findUnique({ where: { slug } });
+  let post: Awaited<ReturnType<typeof prisma.post.findUnique>> = null;
+  try {
+    post = await prisma.post.findUnique({ where: { slug } });
+  } catch {
+    post = null;
+  }
   if (!post || !post.published) notFound();
 
   return (

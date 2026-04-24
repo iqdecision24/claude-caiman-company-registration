@@ -12,7 +12,8 @@ export const metadata: Metadata = {
   description: 'Analysis, playbooks and updates on Cayman Islands corporate structures, banking and compliance.',
 };
 
-export const revalidate = 60;
+// Avoid prerender when env vars are missing at build time.
+export const dynamic = 'force-dynamic';
 
 export default async function BlogPage() {
   let posts: Awaited<ReturnType<typeof prisma.post.findMany>> = [];

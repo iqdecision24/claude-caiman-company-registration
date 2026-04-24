@@ -6,9 +6,12 @@ import { PostsTable } from '@/components/admin/PostsTable';
 export const dynamic = 'force-dynamic';
 
 export default async function AdminPostsPage() {
-  const posts = await prisma.post
-    .findMany({ orderBy: { createdAt: 'desc' } })
-    .catch(() => []);
+  let posts: Awaited<ReturnType<typeof prisma.post.findMany>> = [];
+  try {
+    posts = await prisma.post.findMany({ orderBy: { createdAt: 'desc' } });
+  } catch {
+    posts = [];
+  }
 
   return (
     <div className="p-8 lg:p-12">
