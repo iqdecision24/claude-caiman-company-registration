@@ -16,7 +16,7 @@ const principles = [
   },
   {
     title: 'Substance over paper',
-    body: 'We only recommend structures that make economic sense and stand up to scrutiny \u2014 no opaque shells, no short-cuts.',
+    body: 'We only recommend structures that make economic sense and stand up to scrutiny — no opaque shells, no short-cuts.',
   },
   {
     title: 'Partners, not sales reps',
@@ -49,7 +49,7 @@ export default function AboutPage() {
             </h1>
             <p className="lg:col-span-4 text-foreground-muted leading-relaxed">
               Founded in 2014 in George Town, we focus exclusively on the Cayman Islands
-              jurisdiction \u2014 and we have built our practice around a single idea: get
+              jurisdiction — and we have built our practice around a single idea: get
               structuring right, once.
             </p>
           </div>
@@ -90,7 +90,7 @@ export default function AboutPage() {
               </h2>
               <blockquote className="mt-10 border-l-2 border-gold pl-6 max-w-xl">
                 <p className="pullquote text-ink">
-                  “We felt international clients deserved the same rigour as big-four firms \u2014
+                  “We felt international clients deserved the same rigour as big-four firms —
                   without the bureaucracy, junior handovers and opaque fees. So we built one.”
                 </p>
                 <footer className="mt-4 text-[11px] uppercase tracking-[0.28em] text-foreground-subtle">
@@ -99,7 +99,7 @@ export default function AboutPage() {
               </blockquote>
               <p className="mt-10 text-foreground-muted leading-relaxed max-w-xl">
                 Today we support founders, family offices and fund managers with turnkey
-                formation, nominee services, banking and ongoing compliance \u2014 on a fixed-fee
+                formation, nominee services, banking and ongoing compliance — on a fixed-fee
                 basis. Named partners remain personally responsible for every engagement.
               </p>
             </div>
